@@ -1,4 +1,4 @@
-package ort.tp3.cars.fragments
+package ort.tp3.cars.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
