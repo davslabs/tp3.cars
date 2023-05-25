@@ -11,3 +11,11 @@ Agregar en `main/res/values` una archivo xml `custom.xml` con el siguiente forma
 ```
 
 Rellenar con los valores necesarios para conectarse a Ninja Api (Cars)
+
+# Intregantes
+El equipo se compone de los siguientes integrantes:
+- Assen, David
+- Esquivel, Belén
+- Mondini, Javier
+- Valiño, Santiago
+- Vivas, Ezequiel
