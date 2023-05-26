@@ -1,6 +1,8 @@
 package ort.tp3.cars.ui.viewmodels
 
 import CarModel
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,21 +15,57 @@ import javax.inject.Inject
 class CarsViewModel @Inject constructor(
     private val carsService: CarsService
 ) : ViewModel() {
-    val carsModel = MutableLiveData<List<CarModel>>()
-    val isLoading = MutableLiveData<Boolean>()
+    private val _filter = MutableLiveData<Map<String, String>>()
+    val filter: LiveData<Map<String, String>> = _filter
+
+    fun setFilter (filter: Map<String, String>) {
+        _filter.value = filter
+    }
+
+    private val _carsList = MutableLiveData<List<CarModel>>()
+    val carsList: LiveData<List<CarModel>> = _carsList
+
+    fun setCarsList (carsList: List<CarModel>) {
+        _carsList.value = carsList
+    }
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
+    fun setIsLoading (isLoading: Boolean) {
+        _isLoading.value = isLoading
+    }
 
     fun onCreate() {
         viewModelScope.launch {
-            isLoading.postValue(true)
+            setIsLoading(true)
 
-            // TODO: Esto es un hardcodeo, debería ser un parámetro de entrada
-            val cars = carsService.getCarsByModel("camry")
+            Log.d("CarsViewModel", "Current Filters: ${filter.value}")
 
-            cars.let {
-                carsModel.value = it
+            if (filter.value == null
+                || filter.value?.isEmpty() == true) {
+                setFilter(mapOf(
+                    "year" to "2022",
+                ))
             }
 
-            isLoading.postValue(false)
+            try {
+                val carsList = filter.value?.let { carsService.getCarsByModel(it) }
+
+                Log.d("CarsViewModel", "Cars list: $carsList")
+
+                if (carsList != null) {
+                    setCarsList(carsList)
+                }
+            } catch (e: Exception) {
+                Log.e("CarsViewModel", "Error: ${e.message}")
+            }
+
+            setIsLoading(false)
         }
+    }
+    fun clear() {
+        _carsList.value = emptyList()
+        _filter.value = emptyMap()
     }
 }
