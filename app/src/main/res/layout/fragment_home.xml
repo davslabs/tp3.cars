@@ -20,6 +20,26 @@
             tools:layout_editor_absoluteY="-5dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- ScrollView inferior de marcas: nombre + logo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <HorizontalScrollView
+            android:layout_width="262dp"
+            android:layout_height="156dp"
+            android:layout_marginTop="48dp">
+
+            <LinearLayout
+                android:id="@+id/scrollLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
 
 
 </FrameLayout>

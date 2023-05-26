@@ -25,6 +25,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu"
         android:layout_width="0dp"
@@ -39,5 +41,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
