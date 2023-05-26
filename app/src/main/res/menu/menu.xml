@@ -14,7 +14,7 @@
         android:icon="@drawable/lupa"
         android:title="Buscar" />
     <item
-        android:id="@+id/perfil"
+        android:id="@+id/profile"
         android:icon="@drawable/silueta_de_usuario"
         android:title="Perfil" />
 </menu>
