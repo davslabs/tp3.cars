@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
-    app:startDestination="@id/home">
+    app:startDestination="@id/autos">
 
     <fragment
         android:id="@+id/home"
@@ -16,4 +16,9 @@
         android:name="ort.tp3.cars.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/autos"
+        android:name="ort.tp3.cars.ui.fragments.CarsFragment"
+        android:label="fragment_cars"
+        tools:layout="@layout/fragment_cars" />
 </navigation>
