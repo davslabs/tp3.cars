@@ -2,6 +2,7 @@ package ort.tp3.cars.ui.fragments
 
 import ort.tp3.cars.ui.viewmodels.SharedViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -21,6 +22,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("ProfileFragment", "onCreateView")
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
