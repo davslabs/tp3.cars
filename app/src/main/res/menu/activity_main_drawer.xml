@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/nav_item_profile"
+            android:id="@+id/profile"
             android:icon="@drawable/silueta_de_usuario"
             android:title="Perfil" />
         <item
