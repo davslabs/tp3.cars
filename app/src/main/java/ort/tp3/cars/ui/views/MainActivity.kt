@@ -2,38 +2,37 @@ package ort.tp3.cars.ui.views
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.navigation.NavigationView
+
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import ort.tp3.cars.R
-import ort.tp3.cars.adapters.CarsAdapter
-import ort.tp3.cars.databinding.ActivityMainBinding
-import ort.tp3.cars.ui.viewmodels.CarsViewModel
+import com.google.android.material.navigation.NavigationView
+import ort.tp3.cars.ui.viewmodels.SharedViewModel
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var carsAdapter: CarsAdapter
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+
+    private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var bottomNavView: BottomNavigationView
+    private lateinit var navHostFragment: NavHostFragment
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
-    private val carsViewModel: CarsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+        sharedViewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+        val email = intent.getStringExtra("username")
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
         drawer = findViewById(R.id.viewContainer)
@@ -50,22 +49,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        carsAdapter = CarsAdapter()
-        recyclerView = findViewById(R.id.carsRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = carsAdapter
+        if (email != null) {
+            sharedViewModel.setUsername(email)
+        } else {
+            sharedViewModel.setUsername("Usuario")
+        }
 
-        carsViewModel.onCreate()
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
 
-        carsViewModel.carsModel.observe(this, Observer {
-            carsAdapter.setCarsList(it)
-        })
+        bottomNavView = findViewById(R.id.menu)
 
-        carsViewModel.isLoading.observe(this, Observer {
-            binding.loading.isVisible = it
-        })
-
-        carsViewModel.onCreate()
+        NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
 
     }
