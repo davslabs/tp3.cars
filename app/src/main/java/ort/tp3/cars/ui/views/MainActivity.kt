@@ -1,26 +1,26 @@
 package ort.tp3.cars.ui.views
 
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
-
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-
+import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import ort.tp3.cars.R
-import com.google.android.material.navigation.NavigationView
 import ort.tp3.cars.ui.viewmodels.SharedViewModel
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
     private lateinit var sharedViewModel: SharedViewModel
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navigationView: NavigationView
@@ -66,6 +66,13 @@ class MainActivity : AppCompatActivity() {
         } else {
             sharedViewModel.setUsername("Usuario")
         }
+
+        //restaurar el estado de dark theme
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("dark_theme",false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -80,7 +87,32 @@ class MainActivity : AppCompatActivity() {
         if(toggle.onOptionsItemSelected(item)) {
             return true
         }
-
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, s: String?) {
+        when (s) {
+            /*
+            HELP !! TODO !! FIXME
+            trate de usar "@string/settings_dark_theme_key" y R.string.settings_dark_theme_key.toString() pero no funcionaba
+             */
+            "dark_theme" -> if (sharedPreferences.getBoolean("dark_theme",false)){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                 } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        PreferenceManager.getDefaultSharedPreferences(this)
+            .registerOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        PreferenceManager.getDefaultSharedPreferences(this)
+            .unregisterOnSharedPreferenceChangeListener(this)
     }
 }

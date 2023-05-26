@@ -15,7 +15,9 @@
 
     <!-- Settings -->
     <string name="settings_general_header">Generales</string>
-    <string name="settings_notifications_toggle">Notificaciones</string>
-    <string name="settings_dark_theme_toggle">Modo Oscuro</string>
+    <string name="settings_notifications_key">notifications</string>
+    <string name="settings_notifications_label">Notificaciones</string>
+    <string name="settings_dark_theme_key">dark_theme</string>
+    <string name="settings_dark_theme_label">Modo Oscuro</string>
 
 </resources>

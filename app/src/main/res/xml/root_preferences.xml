@@ -2,10 +2,10 @@
 
     <PreferenceCategory app:title="@string/settings_general_header">
         <SwitchPreferenceCompat
-            app:key="notification_state"
-            app:title="@string/settings_notifications_toggle" />
+            app:key="@string/settings_notifications_key"
+            app:title="@string/settings_notifications_label" />
         <SwitchPreferenceCompat
-            app:key="dark_theme_state"
-            app:title="@string/settings_dark_theme_toggle" />
+            app:key="@string/settings_dark_theme_key"
+            app:title="@string/settings_dark_theme_label" />
     </PreferenceCategory>
 </PreferenceScreen>
