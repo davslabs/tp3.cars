@@ -6,25 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="4dp">
 
         <SearchView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:iconifiedByDefault="false"
+            android:queryHint="Buscador de vehículo"
+            />
+
+
+    </androidx.cardview.widget.CardView>
+
 
     <!-- ScrollView inferior de marcas: nombre + logo -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="156dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="500dp">
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="156dp"
-            android:layout_marginTop="500dp">
+            >
 
             <LinearLayout
                 android:id="@+id/scrollLinearLayout"

@@ -1,6 +1,7 @@
 package ort.tp3.cars.ui.fragments
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
