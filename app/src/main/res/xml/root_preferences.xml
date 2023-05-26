@@ -1,0 +1,11 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/settings_general_header">
+        <SwitchPreferenceCompat
+            app:key="notification_state"
+            app:title="@string/settings_notifications_toggle" />
+        <SwitchPreferenceCompat
+            app:key="dark_theme_state"
+            app:title="@string/settings_dark_theme_toggle" />
+    </PreferenceCategory>
+</PreferenceScreen>

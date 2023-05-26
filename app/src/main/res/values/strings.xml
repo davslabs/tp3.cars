@@ -12,4 +12,10 @@
     <string name="navigation_drawer_open">"Abrir"</string>
     <string name="navigation_drawer_close">"Cerrar"</string>
     <string name="user_avatar">"Imagen de usuario"</string>
+
+    <!-- Settings -->
+    <string name="settings_general_header">Generales</string>
+    <string name="settings_notifications_toggle">Notificaciones</string>
+    <string name="settings_dark_theme_toggle">Modo Oscuro</string>
+
 </resources>
