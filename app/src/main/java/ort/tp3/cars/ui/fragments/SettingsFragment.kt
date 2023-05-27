@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ort.tp3.cars.R
@@ -27,7 +27,7 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val toggleNightMode = view.findViewById(R.id.toggleNightMode) as Switch
+        val toggleNightMode = view.findViewById(R.id.toggleNightMode) as SwitchCompat
 
         toggleNightMode.setOnCheckedChangeListener { _, isChecked ->
             sharedViewModel.setDarkMode(isChecked)
