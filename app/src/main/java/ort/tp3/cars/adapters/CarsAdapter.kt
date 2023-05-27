@@ -13,7 +13,7 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
     private var carsList: List<CarModel> = emptyList()
 
 
-   
+
     fun setCarsList(carsList: List<CarModel>) {
         this.carsList = carsList
         notifyDataSetChanged()
@@ -35,14 +35,20 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
 
     inner class CarsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val carLogoImageView: ImageView = itemView.findViewById(R.id.carLogoImageView)
-        private val carNameTextView: TextView = itemView.findViewById(R.id.carNameTextView)
         private val carModelTextView: TextView = itemView.findViewById(R.id.carModelTextView)
+        private val carDriveTextView: TextView = itemView.findViewById(R.id.carDriveTextView)
+        private val carTransmission: TextView = itemView.findViewById(R.id.carTransmission)
         private val carYearTextView: TextView = itemView.findViewById(R.id.carYearTextView)
+        private val carFuelTypeTextView: TextView = itemView.findViewById(R.id.carFuelTypeTextView)
+
         fun bind(car: CarModel) {
             carLogoImageView.setImageResource(getLogoResourceId(car.make))
-            carNameTextView.text = car.make
             carModelTextView.text = car.model
+            carDriveTextView.text = car.drive
+            carTransmission.text = car.transmission
             carYearTextView.text = car.year.toString()
+            carFuelTypeTextView.text = car.fuelType
+
         }
         private fun getLogoResourceId(brand: String): Int {
             return when (brand) {
