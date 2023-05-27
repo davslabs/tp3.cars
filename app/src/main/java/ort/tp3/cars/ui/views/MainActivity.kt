@@ -1,20 +1,21 @@
 package ort.tp3.cars.ui.views
 
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
-
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import ort.tp3.cars.R
-import com.google.android.material.navigation.NavigationView
 import ort.tp3.cars.ui.viewmodels.SharedViewModel
 
 @AndroidEntryPoint
@@ -64,7 +65,16 @@ class MainActivity : AppCompatActivity() {
         } else {
             sharedViewModel.setUsername("Usuario")
         }
+
+        sharedViewModel.isDarkMode.observe(this, Observer { isDarkMode ->
+            if (isDarkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        })
     }
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         toggle.syncState()
@@ -78,7 +88,6 @@ class MainActivity : AppCompatActivity() {
         if(toggle.onOptionsItemSelected(item)) {
             return true
         }
-
         return super.onOptionsItemSelected(item)
     }
 }
