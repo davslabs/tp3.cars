@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">cars</string>
+    <string name="app_name">PremierRentCard</string>
+    <string name="premier">Premier</string>
+    <string name="rentCard">RentCard</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -12,12 +14,11 @@
     <string name="navigation_drawer_open">"Abrir"</string>
     <string name="navigation_drawer_close">"Cerrar"</string>
     <string name="user_avatar">"Imagen de usuario"</string>
-
-    <!-- Settings -->
     <string name="settings_general_header">Generales</string>
     <string name="settings_notifications_key">notifications</string>
     <string name="settings_notifications_label">Notificaciones</string>
     <string name="settings_dark_theme_key">dark_theme</string>
     <string name="settings_dark_theme_label">Modo Oscuro</string>
-
+    <string name="forgot">"Olvide la contraseña"</string>
+    <string name="login">"Ingresar"</string>
 </resources>

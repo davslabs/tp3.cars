@@ -1,67 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.views.LoginActivity">
+    tools:context=".ui.views.LoginActivity"
+    android:background="@drawable/background">
+
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/Premier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PremierRentCar"
+        android:layout_marginStart="84dp"
+        android:background="@color/purple_500"
+        android:text="@string/premier"
+        android:textColor="@color/white"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334" />
+        tools:layout_editor_absoluteY="84dp"
+        tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/passwordLogin"
-        android:layout_width="354dp"
-        android:layout_height="60dp"
-        android:ems="10"
-        android:hint="Contraseña*"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+    <TextView
+        android:id="@+id/RentCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:text="@string/rentCard"
+        android:textColor="@color/black"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.719"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailLogin"
-        app:layout_constraintVertical_bias="0.302" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/Premier"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="84dp" />
 
     <EditText
         android:id="@+id/emailLogin"
-        android:layout_width="354dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:ems="10"
-        android:hint="Email*"
+        android:layout_margin="40dp"
+        android:background="@drawable/background_radius"
+        android:backgroundTint="@color/white"
+        android:hint="@string/prompt_email"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.719"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.611" />
+        android:textAlignment="center"
+        android:textColorHint="@color/gris"
+        app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/RentCard"
+        app:layout_constraintVertical_bias="0.741"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <EditText
+        android:id="@+id/passwordLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="40dp"
+        android:background="@drawable/background_radius"
+        android:backgroundTint="@color/white"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColorHint="@color/gris"
+        tools:layout_editor_absoluteY="344dp"
+        tools:ignore="MissingConstraints"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.02"
-        android:lineHeight="76sp"
-        android:text="Olvide la contraseña"
+        android:text="@string/forgot"
         android:textAlignment="center"
-        android:textColor="#777777"
-        android:textFontWeight="100"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
@@ -69,14 +86,13 @@
         android:id="@+id/loginButton"
         android:layout_width="206dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="128dp"
         android:fontFamily="sans-serif"
-        android:text="Ingresar"
+        android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
