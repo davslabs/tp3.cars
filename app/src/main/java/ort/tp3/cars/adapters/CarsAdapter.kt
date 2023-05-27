@@ -33,10 +33,12 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
 
     inner class CarsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val carNameTextView: TextView = itemView.findViewById(R.id.carNameTextView)
-
+        private val carModelTextView: TextView = itemView.findViewById(R.id.carModelTextView)
+        private val carYearTextView: TextView = itemView.findViewById(R.id.carYearTextView)
         fun bind(car: CarModel) {
-            val carDescription = "${car.make} ${car.model} ${car.year}"
-            carNameTextView.text = carDescription
+            carNameTextView.text = car.make
+            carModelTextView.text = car.model
+            carYearTextView.text = car.year.toString()
         }
     }
 }

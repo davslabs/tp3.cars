@@ -44,6 +44,8 @@ class CarsFragment : Fragment() {
 
         carsViewModel.carsList.observe(viewLifecycleOwner) {
             carsAdapter.setCarsList(it)
+
+
         }
 
         carsViewModel.isLoading.observe(viewLifecycleOwner, Observer {
