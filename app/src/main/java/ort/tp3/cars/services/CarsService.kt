@@ -8,9 +8,9 @@ import javax.inject.Inject
 class CarsService @Inject constructor(
     private val api: CarsApi
 ) {
-    suspend fun getCarsByModel(model: String): List<CarModel> {
+    suspend fun getCarsByModel(filters: Map<String, String>): List<CarModel> {
         return withContext(Dispatchers.IO) {
-            val response = api.getCarsByModel(model)
+            val response = api.getCarsByFilter(filters)
             response.body() ?: emptyList()
         }
     }
