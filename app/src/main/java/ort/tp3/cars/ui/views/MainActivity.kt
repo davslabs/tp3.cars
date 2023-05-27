@@ -8,10 +8,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +19,7 @@ import ort.tp3.cars.R
 import ort.tp3.cars.ui.viewmodels.SharedViewModel
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var sharedViewModel: SharedViewModel
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navigationView: NavigationView
@@ -66,13 +66,15 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             sharedViewModel.setUsername("Usuario")
         }
 
-        //restaurar el estado de dark theme
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("dark_theme",false)){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+        sharedViewModel.isDarkMode.observe(this, Observer { isDarkMode ->
+            if (isDarkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        })
     }
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         toggle.syncState()
@@ -87,31 +89,5 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, s: String?) {
-        when (s) {
-            /*
-            HELP !! TODO !! FIXME
-            trate de usar "@string/settings_dark_theme_key" y R.string.settings_dark_theme_key.toString() pero no funcionaba
-             */
-            "dark_theme" -> if (sharedPreferences.getBoolean("dark_theme",false)){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                 } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        PreferenceManager.getDefaultSharedPreferences(this)
-            .registerOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        PreferenceManager.getDefaultSharedPreferences(this)
-            .unregisterOnSharedPreferenceChangeListener(this)
     }
 }

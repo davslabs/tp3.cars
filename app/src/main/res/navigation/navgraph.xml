@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/settings"
         android:name="ort.tp3.cars.ui.fragments.SettingsFragment"
-        android:label="settings_profile"
-        tools:layout="@xml/root_preferences" />
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
