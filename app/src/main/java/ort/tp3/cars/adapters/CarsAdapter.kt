@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ort.tp3.cars.R
+import ort.tp3.cars.dataclasses.BrandsModel
 
 class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
     private var carsList: List<CarModel> = emptyList()
@@ -31,6 +32,10 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
 
     override fun getItemCount(): Int {
         return carsList.size
+    }
+
+    fun setBrands(brands: List<BrandsModel>) {
+        TODO("Not yet implemented")
     }
 
     inner class CarsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
