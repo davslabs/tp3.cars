@@ -4,36 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.views.LoginActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    tools:context=".ui.views.LoginActivity">
 
 
-    <TextView
-        android:id="@+id/Premier"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:background="@color/purple_500"
-        android:text="@string/premier"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="84dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/RentCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/orange"
-        android:text="@string/rentCard"
-        android:textColor="@color/black"
-        android:textSize="34sp"
+        android:layout_margin="50dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Premier"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="84dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/emailLogin"
@@ -48,9 +33,10 @@
         android:textAlignment="center"
         android:textColorHint="@color/gris"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
-        app:layout_constraintTop_toBottomOf="@+id/RentCard"
-        app:layout_constraintVertical_bias="0.741"
-        tools:layout_editor_absoluteX="40dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.741" />
 
     <EditText
         android:id="@+id/passwordLogin"
@@ -60,12 +46,14 @@
         android:background="@drawable/background_radius"
         android:backgroundTint="@color/white"
         android:hint="@string/prompt_password"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textColorHint="@color/gris"
-        tools:layout_editor_absoluteY="344dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        android:importantForAutofill="no" />
+        tools:layout_editor_absoluteY="344dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -86,13 +74,13 @@
         android:id="@+id/loginButton"
         android:layout_width="206dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="128dp"
         android:fontFamily="sans-serif"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
