@@ -15,7 +15,6 @@ import ort.tp3.cars.R
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
-
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
