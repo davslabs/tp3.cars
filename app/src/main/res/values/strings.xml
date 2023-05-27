@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">cars</string>
+    <string name="app_name">PremierRentCard</string>
+    <string name="premier">Premier</string>
+    <string name="rentCard">RentCard</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -12,4 +14,6 @@
     <string name="navigation_drawer_open">"Abrir"</string>
     <string name="navigation_drawer_close">"Cerrar"</string>
     <string name="user_avatar">"Imagen de usuario"</string>
+    <string name="forgot">"Olvide la contraseña"</string>
+    <string name="login">"Ingresar"</string>
 </resources>
