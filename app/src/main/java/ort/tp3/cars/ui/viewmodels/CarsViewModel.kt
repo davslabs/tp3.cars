@@ -1,6 +1,6 @@
 package ort.tp3.cars.ui.viewmodels
 
-import CarModel
+import ort.tp3.cars.dataclasses.CarModel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,12 +8,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import ort.tp3.cars.services.CarsService
+import ort.tp3.cars.data.CarsRepository
+import ort.tp3.cars.data.network.CarsService
 import javax.inject.Inject
 
 @HiltViewModel
 class CarsViewModel @Inject constructor(
-    private val carsService: CarsService
+    private val carsRepository: CarsRepository,
 ) : ViewModel() {
     private val _filter = MutableLiveData<Map<String, String>>()
     val filter: LiveData<Map<String, String>> = _filter
@@ -50,7 +51,7 @@ class CarsViewModel @Inject constructor(
             }
 
             try {
-                val carsList = filter.value?.let { carsService.getCarsByModel(it) }
+                val carsList = filter.value?.let { carsRepository.getCarsByFilter(it) }
 
                 Log.d("CarsViewModel", "Cars list: $carsList")
 

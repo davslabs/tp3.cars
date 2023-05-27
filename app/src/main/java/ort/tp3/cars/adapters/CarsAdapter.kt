@@ -1,6 +1,6 @@
 package ort.tp3.cars.adapters
 
-import CarModel
+import ort.tp3.cars.dataclasses.CarModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

@@ -1,3 +1,5 @@
+package ort.tp3.cars.dataclasses
+
 import com.google.gson.annotations.SerializedName
 
 data class CarModel(

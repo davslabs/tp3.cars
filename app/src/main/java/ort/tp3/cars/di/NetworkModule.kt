@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import ort.tp3.cars.commons.Config
 import ort.tp3.cars.interceptors.RequestInterceptor
-import ort.tp3.cars.services.CarsApi
+import ort.tp3.cars.data.network.CarsApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton

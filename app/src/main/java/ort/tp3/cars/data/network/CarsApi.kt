@@ -1,9 +1,8 @@
-package ort.tp3.cars.services
+package ort.tp3.cars.data.network
 
-import CarModel
+import ort.tp3.cars.dataclasses.CarModel
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 interface CarsApi {
