@@ -63,6 +63,11 @@ sealed class Brand {
     object Renault : Brand()
     object Porsche : Brand()
     object Jeep : Brand()
+    object BMW : Brand()
+
+    object Honda : Brand()
+
+    object Kia : Brand()
     data class Other(val value: String) : Brand()
 
     companion object {
@@ -74,6 +79,9 @@ sealed class Brand {
                 "renault" -> Renault
                 "porsche" -> Porsche
                 "jeep" -> Jeep
+                "bmw" -> BMW
+                "honda" -> Honda
+                "kia" -> Kia
                 else -> Other(value)
             }
         }
