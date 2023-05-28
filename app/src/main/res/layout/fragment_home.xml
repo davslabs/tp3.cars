@@ -87,6 +87,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/dieselCardView"
             android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filterRecyclerView"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
@@ -172,6 +176,10 @@
 
         </androidx.cardview.widget.CardView>
 
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:clipToPadding="false" />
 
     </LinearLayout>
 
@@ -202,7 +210,7 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/brandRecyclerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -211,5 +219,9 @@
         </HorizontalScrollView>
 
     </LinearLayout>
+
+
+
+
 
 </RelativeLayout>
