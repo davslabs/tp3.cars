@@ -65,4 +65,35 @@ class HomeFragment : Fragment() {
         val navController = findNavController()
         navController.navigate(R.id.action_home_to_cars)
     }
+
+
+    fun onClickDiesel(view: View) {
+        carsViewModel.setFilter(mapOf(
+            "fuel" to "Diesel"
+        ))
+
+        val navController = findNavController()
+        navController.navigate(R.id.action_home_to_cars)
+
+    }
+    fun onClickNafta(view: View) {
+        carsViewModel.setFilter(mapOf(
+            "fuel" to "Nafta"
+        ))
+
+        val navController = findNavController()
+        navController.navigate(R.id.action_home_to_cars)
+
+    }
+
+    fun onClickElectrico(view: View) {
+        carsViewModel.setFilter(mapOf(
+            "fuel" to "Electrico"
+        ))
+
+        val navController = findNavController()
+        navController.navigate(R.id.action_home_to_cars)
+
+    }
+
 }

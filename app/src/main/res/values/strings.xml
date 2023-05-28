@@ -26,4 +26,5 @@
     <string name="login">"Ingresar"</string>
     <string name="logo">PremierRentCar</string>
     <string name="brandLogo">Logo de marca</string>
+    <string name="search">Buscador de vehículo</string>
 </resources>
