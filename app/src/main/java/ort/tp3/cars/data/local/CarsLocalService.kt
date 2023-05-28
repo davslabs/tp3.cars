@@ -1,6 +1,8 @@
 package ort.tp3.cars.data.local
 
+import ort.tp3.cars.R
 import ort.tp3.cars.dataclasses.BrandsModel
+import ort.tp3.cars.dataclasses.CarFilterModel
 import javax.inject.Inject
 
 class CarsLocalService @Inject constructor() {
@@ -15,6 +17,14 @@ class CarsLocalService @Inject constructor() {
             BrandsModel("Renault", logoBaseUrl2 + "Renault-logo-2015-2048x2048.png"),
             BrandsModel("Porsche", logoBaseUrl1 + "porsche-logo-950x1100.png"),
             BrandsModel("Jeep", logoBaseUrl1 + "jeep-logo-1993.png"),
+        )
+    }
+
+    suspend fun getAvailableFilters(): List<CarFilterModel> {
+        return listOf(
+            CarFilterModel("NAFTA", "gas", "#FFCC00", R.drawable.nafta),
+            CarFilterModel("DIESEL", "diesel", "#3330E5", R.drawable.diesel),
+            CarFilterModel("ELÉCTRICO", "electricity", "#04D9FF", R.drawable.electrico),
         )
     }
 }
