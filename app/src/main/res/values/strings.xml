@@ -15,7 +15,7 @@
     <string name="nafta">NAFTA</string>
     <string name="diesel">DIESEL</string>
     <string name="electrico">ELÉCTRICO</string>
-    <string name="filtro">filtro >|</string>
+    <string name="filtro">Filtro >|</string>
     <string name="navigation_drawer_open">"Abrir"</string>
     <string name="navigation_drawer_close">"Cerrar"</string>
     <string name="user_avatar">"Imagen de usuario"</string>

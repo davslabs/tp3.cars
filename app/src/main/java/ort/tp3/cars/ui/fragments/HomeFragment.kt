@@ -1,10 +1,10 @@
 package ort.tp3.cars.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -24,6 +24,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private val carsViewModel: CarsViewModel by activityViewModels()
+
     @Inject
     lateinit var carsRepository: CarsRepository
 
@@ -71,12 +72,10 @@ class HomeFragment : Fragment() {
             }
         })
 
-        val filters = listOf(
-            CarFilterModel("Nafta", "gas", R.drawable.nafta),
-            CarFilterModel("Diesel", "diesel", R.drawable.diesel),
-            CarFilterModel("Eléctrico", "electricity", R.drawable.electrico),
-        )
-        filterAdapter.setFilters(filters)
+        lifecycleScope.launch {
+            val filters = carsRepository.getAvailableFilters()
+            filterAdapter.setFilters(filters)
+        }
     }
 
     fun handleBrandClick(brand: BrandsModel) {
