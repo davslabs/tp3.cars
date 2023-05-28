@@ -9,10 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ort.tp3.cars.R
 import ort.tp3.cars.dataclasses.BrandsModel
+import ort.tp3.cars.helpers.DataCarConvert
+import ort.tp3.cars.helpers.ImageHelper.getLogoResourceId
+import java.util.Locale
 
 class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
     private var carsList: List<CarModel> = emptyList()
 
+    private val dataCarConvert = DataCarConvert()
 
 
     fun setCarsList(carsList: List<CarModel>) {
@@ -39,6 +43,7 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
     }
 
     inner class CarsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val carBrandTextView: TextView = itemView.findViewById(R.id.carBrand)
         private val carLogoImageView: ImageView = itemView.findViewById(R.id.carLogoImageView)
         private val carModelTextView: TextView = itemView.findViewById(R.id.carModelTextView)
         private val carDriveTextView: TextView = itemView.findViewById(R.id.carDriveTextView)
@@ -47,22 +52,23 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
         private val carFuelTypeTextView: TextView = itemView.findViewById(R.id.carFuelTypeTextView)
 
         fun bind(car: CarModel) {
+
+
+            val fuelText = dataCarConvert.convertFuelType(car.fuelType)
+            val transmissionText = dataCarConvert.convertTransmission(car.transmission)
+            val driveText = dataCarConvert.convertDrive(car.drive)
+            val carBrandText = dataCarConvert.convertBrand(car.make)
+
+
             carLogoImageView.setImageResource(getLogoResourceId(car.make))
             carModelTextView.text = car.model
-            carDriveTextView.text = car.drive
-            carTransmission.text = car.transmission
+            carDriveTextView.text = driveText
+            carTransmission.text = transmissionText
             carYearTextView.text = car.year.toString()
-            carFuelTypeTextView.text = car.fuelType
+            carFuelTypeTextView.text = fuelText
+            carBrandTextView.text = carBrandText
+        }
 
-        }
-        private fun getLogoResourceId(brand: String): Int {
-            return when (brand) {
-                "bmw" -> R.drawable.logo_bmw
-                "volkswagen" -> R.drawable.logo_vw
-                "honda" -> R.drawable.logo_honda
-                else -> R.drawable.logo_toyota
-            }
-        }
     }
 }
 
