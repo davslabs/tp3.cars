@@ -14,5 +14,6 @@
     <color name="yellow">#FFFF00</color>
     <color name="green">#008000</color>
     <color name="blue">#0000FF</color>
-    <color name="rosa">#FFC0CB</color>
+    <color name="blue_light">#1B72C0</color>
+
 </resources>

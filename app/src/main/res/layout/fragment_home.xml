@@ -4,224 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".ui.fragments.HomeFragment">
 
-    <!-- Cardview: SearchView -->
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="4dp">
-
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:iconifiedByDefault="false"
-            android:queryHint="@string/search"
-            android:textColor="@color/gris"
-            />
-
-        <!-- Cardview: Button Filer fuel -->
-
-    </androidx.cardview.widget.CardView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchView"
-        android:layout_alignBottom="@+id/scrollViewLayout"
-        android:layout_marginBottom="269dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/naftaCardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/blue"
-            app:cardCornerRadius="20dp">
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="4dp">
 
-            <RelativeLayout
+            <SearchView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/naftaTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:letterSpacing="0.02"
-                    android:text="@string/nafta"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    tools:ignore="VisualLintOverlap" />
-
-                <ImageButton
-                    android:id="@+id/nafta"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/nafta"
-                    android:onClick="onClickNafta"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/nafta"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:iconifiedByDefault="false"
+                android:queryBackground="@android:color/transparent"
+                android:queryHint="Buscador de vehículo"
+                android:textColorHint="#808080" />
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/dieselCardView"
-            android:layout_width="wrap_content"
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/filterRecyclerView"
-            android:orientation="vertical"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/filterRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="10dp" />
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/scrollViewLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/orange"
-            app:cardCornerRadius="20dp">
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/dieselTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:letterSpacing="0.02"
-                    android:text="@string/diesel"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    tools:ignore="TextContrastCheck,VisualLintOverlap" />
-
-                <ImageButton
-                    android:id="@+id/diesel"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/nafta"
-                    android:onClick="onClickDiesel"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/diesel" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/electricoCardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/red"
-            app:cardCornerRadius="20dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/electricoTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:letterSpacing="0.02"
-                    android:text="@string/electrico"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    tools:ignore="VisualLintOverlap" />
-
-                <ImageButton
-                    android:id="@+id/electrico"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/electrico"
-
-                    android:onClick="onClickElectrico"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/electrico"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp"
-            android:clipToPadding="false" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/scrollViewLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/marcas"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_gravity="start"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/marcas"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/brandRecyclerView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginTop="8dp" />
 
-        </HorizontalScrollView>
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
-
 
 </RelativeLayout>
