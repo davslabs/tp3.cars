@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@drawable/rounded_background"
     tools:context=".ui.fragments.HomeFragment">
 
     <LinearLayout
@@ -28,7 +28,8 @@
                 android:background="@android:color/transparent"
                 android:iconifiedByDefault="false"
                 android:queryBackground="@android:color/transparent"
-                android:queryHint="Buscador de vehículo"
+                android:theme="@style/CustomSearchViewStyle"
+                android:queryHint="Buscador de vehículos"
                 android:textColorHint="#808080" />
 
         </androidx.cardview.widget.CardView>

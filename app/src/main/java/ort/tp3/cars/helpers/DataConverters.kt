@@ -55,3 +55,27 @@ sealed class FuelType {
         }
     }
 }
+
+sealed class Brand {
+    object Maserati : Brand()
+    object Mercedes : Brand()
+    object Audi : Brand()
+    object Renault : Brand()
+    object Porsche : Brand()
+    object Jeep : Brand()
+    data class Other(val value: String) : Brand()
+
+    companion object {
+        fun fromString(value: String): Brand {
+            return when (value.lowercase(Locale.ROOT)) {
+                "maserati" -> Maserati
+                "mercedes-benz" -> Mercedes
+                "audi" -> Audi
+                "renault" -> Renault
+                "porsche" -> Porsche
+                "jeep" -> Jeep
+                else -> Other(value)
+            }
+        }
+    }
+}
