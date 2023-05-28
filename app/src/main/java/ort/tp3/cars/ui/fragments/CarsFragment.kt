@@ -29,7 +29,7 @@ class CarsFragment : Fragment() {
         Log.d("CarsFragment", "onCreateView")
 
         carsViewModel.onCreate()
-        carsAdapter = CarsAdapter()
+        carsAdapter = CarsAdapter(requireContext(), mutableListOf())
 
         return inflater.inflate(R.layout.fragment_cars, container, false)
     }
@@ -44,8 +44,6 @@ class CarsFragment : Fragment() {
 
         carsViewModel.carsList.observe(viewLifecycleOwner) {
             carsAdapter.setCarsList(it)
-
-
         }
 
         carsViewModel.isLoading.observe(viewLifecycleOwner, Observer {

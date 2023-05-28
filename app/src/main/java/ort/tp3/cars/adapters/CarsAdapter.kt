@@ -1,5 +1,6 @@
 package ort.tp3.cars.adapters
 
+import android.content.Context
 import ort.tp3.cars.dataclasses.CarModel
 import android.view.LayoutInflater
 import android.view.View
@@ -7,16 +8,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import ort.tp3.cars.R
-import ort.tp3.cars.dataclasses.BrandsModel
 
-class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
-    private var carsList: List<CarModel> = emptyList()
-
-
+class CarsAdapter(private val context: Context, private val carsList: List<CarModel>) :
+    RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
 
     fun setCarsList(carsList: List<CarModel>) {
-        this.carsList = carsList
+        (this.carsList as ArrayList).clear()
+        this.carsList.addAll(carsList)
         notifyDataSetChanged()
     }
 
@@ -34,11 +36,8 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
         return carsList.size
     }
 
-    fun setBrands(brands: List<BrandsModel>) {
-        TODO("Not yet implemented")
-    }
-
     inner class CarsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val carBrandTextView: TextView = itemView.findViewById(R.id.carBrand)
         private val carLogoImageView: ImageView = itemView.findViewById(R.id.carLogoImageView)
         private val carModelTextView: TextView = itemView.findViewById(R.id.carModelTextView)
         private val carDriveTextView: TextView = itemView.findViewById(R.id.carDriveTextView)
@@ -47,22 +46,29 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
         private val carFuelTypeTextView: TextView = itemView.findViewById(R.id.carFuelTypeTextView)
 
         fun bind(car: CarModel) {
-            carLogoImageView.setImageResource(getLogoResourceId(car.make))
-            carModelTextView.text = car.model
-            carDriveTextView.text = car.drive
-            carTransmission.text = car.transmission
-            carYearTextView.text = car.year.toString()
-            carFuelTypeTextView.text = car.fuelType
+            val fuelText = car.getConvertedFuelType()
+            val transmissionText = car.getConvertedTransmission()
+            val driveText = car.getConvertedDrive()
+            val carBrandText = car.getConvertedMake()
 
+            carModelTextView.text = car.model
+            carDriveTextView.text = driveText
+            carTransmission.text = transmissionText
+            carYearTextView.text = car.year.toString()
+            carFuelTypeTextView.text = fuelText
+            carBrandTextView.text = carBrandText
+
+            val requestOptions = RequestOptions().transform(CircleCrop())
+
+
+            Glide.with(context)
+                .load(car.getMakerLogo())
+                .apply(requestOptions)
+                .fitCenter()
+                .override(180, 180)
+                .into(carLogoImageView)
         }
-        private fun getLogoResourceId(brand: String): Int {
-            return when (brand) {
-                "bmw" -> R.drawable.logo_bmw
-                "volkswagen" -> R.drawable.logo_vw
-                "honda" -> R.drawable.logo_honda
-                else -> R.drawable.logo_toyota
-            }
-        }
+
     }
 }
 

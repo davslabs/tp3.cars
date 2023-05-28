@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -33,8 +34,9 @@ class MainActivity : AppCompatActivity() {
 
         sharedViewModel = ViewModelProvider(this)[SharedViewModel::class.java]
         val email = intent.getStringExtra("username")
-        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         drawer = findViewById(R.id.viewContainer)
 
@@ -60,11 +62,17 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavView, navController)
         NavigationUI.setupWithNavController(navigationView, navController)
 
+        val headerUsernameTextView: TextView = navigationView.getHeaderView(0).findViewById(R.id.nav_header_username)
+
         if (email != null) {
             sharedViewModel.setUsername(email)
         } else {
             sharedViewModel.setUsername("Usuario")
         }
+
+        sharedViewModel.username.observe(this, Observer { username ->
+            headerUsernameTextView.text = username
+        })
 
         sharedViewModel.isDarkMode.observe(this, Observer { isDarkMode ->
             if (isDarkMode) {
