@@ -11,6 +11,7 @@ import ort.tp3.cars.R
 import ort.tp3.cars.dataclasses.BrandsModel
 import ort.tp3.cars.helpers.DataCarConvert
 import ort.tp3.cars.helpers.ImageHelper.getLogoResourceId
+import java.util.Locale
 
 class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
     private var carsList: List<CarModel> = emptyList()
@@ -42,6 +43,7 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
     }
 
     inner class CarsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val carBrandTextView: TextView = itemView.findViewById(R.id.carBrand)
         private val carLogoImageView: ImageView = itemView.findViewById(R.id.carLogoImageView)
         private val carModelTextView: TextView = itemView.findViewById(R.id.carModelTextView)
         private val carDriveTextView: TextView = itemView.findViewById(R.id.carDriveTextView)
@@ -53,16 +55,18 @@ class CarsAdapter : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
 
 
             val fuelText = dataCarConvert.convertFuelType(car.fuelType)
-            val transmissionText = dataCarConvert.convertTransmission(car.transmission);
+            val transmissionText = dataCarConvert.convertTransmission(car.transmission)
             val driveText = dataCarConvert.convertDrive(car.drive)
+            val carBrandText = dataCarConvert.convertBrand(car.make)
+
 
             carLogoImageView.setImageResource(getLogoResourceId(car.make))
-            carYearTextView.text = car.year.toString()
             carModelTextView.text = car.model
             carDriveTextView.text = driveText
             carTransmission.text = transmissionText
+            carYearTextView.text = car.year.toString()
             carFuelTypeTextView.text = fuelText
-
+            carBrandTextView.text = carBrandText
         }
 
     }

@@ -25,20 +25,19 @@
             android:contentDescription="@string/imageyear"
             />
 
+
         <ImageView
             android:id="@+id/carLogoImageView"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:contentDescription="@string/carlogoimage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/lineSeparator"
-            app:layout_constraintHorizontal_bias="0.366"
+            app:layout_constraintHorizontal_bias="0.389"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/carlogoimage"
 
-            />
-
-
+            app:layout_constraintVertical_bias="0.695" />
 
         <TextView
             android:id="@+id/carModelTextView"
@@ -46,10 +45,12 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/carLogoImageView"
-            app:layout_constraintEnd_toEndOf="@+id/carLogoImageView"
-            app:layout_constraintStart_toStartOf="@+id/carLogoImageView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/carBrand"
+            app:layout_constraintEnd_toStartOf="@+id/lineSeparator"
+            app:layout_constraintHorizontal_bias="0.152"
+            app:layout_constraintStart_toEndOf="@+id/carBrand"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <View
             android:id="@+id/lineSeparator"
@@ -147,6 +148,13 @@
             app:layout_constraintStart_toStartOf="@+id/carTransmission"
             app:layout_constraintTop_toBottomOf="@+id/carFuelTypeTextView" />
 
+        <TextView
+            android:id="@+id/carBrand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/carLogoImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

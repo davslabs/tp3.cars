@@ -29,4 +29,13 @@ class DataCarConvert {
             else -> fuelType
         }
     }
+
+    fun convertBrand(fuelType: String): String {
+        return fuelType.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString()
+        }
+    }
+
+
+
 }
