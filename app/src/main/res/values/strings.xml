@@ -21,4 +21,9 @@
     <string name="login">"Ingresar"</string>
     <string name="logo">PremierRentCar</string>
     <string name="brandLogo">Logo de marca</string>
+    <string name="imageyear">imageYear</string>
+    <string name="carlogoimage">carLogoImage</string>
+    <string name="imagecar">imageCar</string>
+    <string name="imageCarLogo">imageCar</string>
+    <string name="imageCarFuel" />
 </resources>
