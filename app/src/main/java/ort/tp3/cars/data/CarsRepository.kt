@@ -1,9 +1,10 @@
 package ort.tp3.cars.data
 
-import ort.tp3.cars.dataclasses.CarModel
 import ort.tp3.cars.data.local.CarsLocalService
 import ort.tp3.cars.data.network.CarsService
 import ort.tp3.cars.dataclasses.BrandsModel
+import ort.tp3.cars.dataclasses.CarFilterModel
+import ort.tp3.cars.dataclasses.CarModel
 import javax.inject.Inject
 
 class CarsRepository @Inject constructor(
@@ -16,5 +17,9 @@ class CarsRepository @Inject constructor(
 
     suspend fun getAvailableBrands(): List<BrandsModel> {
         return local.getAvailableBrands()
+    }
+
+    suspend fun getAvailableFilters(): List<CarFilterModel> {
+        return local.getAvailableFilters()
     }
 }
