@@ -29,7 +29,7 @@
                 android:iconifiedByDefault="false"
                 android:queryBackground="@android:color/transparent"
                 android:theme="@style/CustomSearchViewStyle"
-                android:queryHint="Buscador de vehículos"
+                android:queryHint="@string/search"
                 android:textColorHint="#808080" />
 
         </androidx.cardview.widget.CardView>
