@@ -1,3 +1,7 @@
+# Requisitos
+- Android Studio
+- Usar la version 17 JVM (Java Virtual Machine)
+
 # Instalación
 
 Agregar en `main/res/values` una archivo xml `custom.xml` con el siguiente formato:
