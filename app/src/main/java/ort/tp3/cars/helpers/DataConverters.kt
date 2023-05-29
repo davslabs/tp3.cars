@@ -8,11 +8,15 @@ sealed class Transmission {
     data class Other(val value: String) : Transmission()
 
     companion object {
-        fun fromString(value: String): Transmission {
-            return when (value.lowercase(Locale.ROOT)) {
-                "m" -> Manual
-                "a" -> Automatic
-                else -> Other(value)
+        fun fromString(value: String?): Transmission {
+            return if (value != null) {
+                when (value.lowercase(Locale.ROOT)) {
+                    "m" -> Manual
+                    "a" -> Automatic
+                    else -> Other(value)
+                }
+            } else {
+                Other("")
             }
         }
     }
@@ -26,13 +30,17 @@ sealed class Drive {
     data class Other(val value: String) : Drive()
 
     companion object {
-        fun fromString(value: String): Drive {
-            return when (value.lowercase(Locale.ROOT)) {
-                "fwd" -> FrontWheelDrive
-                "rwd" -> RearWheelDrive
-                "awd" -> AllWheelDrive
-                "4wd" -> FourWheelDrive
-                else -> Other(value)
+        fun fromString(value: String?): Drive {
+            return if (value != null) {
+                when (value.lowercase(Locale.ROOT)) {
+                    "fwd" -> FrontWheelDrive
+                    "rwd" -> RearWheelDrive
+                    "awd" -> AllWheelDrive
+                    "4wd" -> FourWheelDrive
+                    else -> Other(value)
+                }
+            } else {
+                Other("")
             }
         }
     }
@@ -45,12 +53,16 @@ sealed class FuelType {
     data class Other(val value: String) : FuelType()
 
     companion object {
-        fun fromString(value: String): FuelType {
-            return when (value.lowercase(Locale.ROOT)) {
-                "gas" -> Gas
-                "diesel" -> Diesel
-                "electricity" -> Electricity
-                else -> Other(value)
+        fun fromString(value: String?): FuelType {
+            return if (value != null) {
+                when (value.lowercase(Locale.ROOT)) {
+                    "gas" -> Gas
+                    "diesel" -> Diesel
+                    "electricity" -> Electricity
+                    else -> Other(value)
+                }
+            } else {
+                Other("")
             }
         }
     }

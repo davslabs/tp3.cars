@@ -3,8 +3,8 @@ package ort.tp3.cars.dataclasses
 import com.google.gson.annotations.SerializedName
 import ort.tp3.cars.helpers.*
 
-private val logoBaseUrl1 = "https://www.carlogos.org/car-logos/"
-private val logoBaseUrl2 = "https://www.carlogos.org/logo/"
+private const val logoBaseUrl1 = "https://www.carlogos.org/car-logos/"
+private const val logoBaseUrl2 = "https://www.carlogos.org/logo/"
 
 
 data class CarModel(
@@ -12,7 +12,7 @@ data class CarModel(
     @SerializedName("fuel_type") val fuelType: String,
     val make: String,
     val model: String,
-    val transmission: String,
+    val transmission: String?,
     val year: Int
 ) {
     fun getConvertedTransmission(): String {
