@@ -17,6 +17,7 @@ class CarsLocalService @Inject constructor() {
             BrandsModel("Renault", logoBaseUrl2 + "Renault-logo-2015-2048x2048.png"),
             BrandsModel("Porsche", logoBaseUrl1 + "porsche-logo-950x1100.png"),
             BrandsModel("Jeep", logoBaseUrl1 + "jeep-logo-1993.png"),
+            BrandsModel("BMW", logoBaseUrl1 + "bmw-logo-2020-gray-download.png"),
         )
     }
 
